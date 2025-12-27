@@ -1,13 +1,28 @@
 spring:
   application:
     name: com.ecommerce
-  h2:
-    console:
-      enabled: true
   datasource:
-    url: jdbc:h2:mem:test
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: create
+    url: jdbc:postgresql://localhost:5432/hannan?options=-c%20TimeZone=Asia/Kolkata
 
+    #this is nothing but POSTGRES_USER: hannan from docker compose.yml
+    username: hannan
+    password: hannan
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    properties:
+      hibernate.jdbc.time_zone: Asia/Kolkata
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+#  h2:
+#    console:
+#      enabled: true
+#  datasource:
+#    url: jdbc:h2:mem:test
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: create
+#spring.jpa.properties.hibernate.jdbc.time_zone=Asia/Calcutta
